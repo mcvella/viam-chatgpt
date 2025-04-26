@@ -4,6 +4,7 @@ import os
 from typing import ClassVar
 from typing_extensions import Self
 from urllib.request import urlretrieve
+from typing import Any, List, Mapping, Optional
 
 from viam.logging import getLogger
 from viam.module.module import Reconfigurable
@@ -53,7 +54,7 @@ class viam_chatgpt(Chat, Reconfigurable):
 
         return
 
-    async def chat(self, message: str) -> str:
+    async def chat(self, message: str, *, extra: Optional[Mapping[str, Any]] = None, **kwargs) -> str:
         if self.openai is None:
             raise Exception("OpenAI API is not ready")
 
