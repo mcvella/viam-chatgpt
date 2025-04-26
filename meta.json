@@ -6,7 +6,7 @@
   "description": "ChatGPT service for Viam",
   "models": [
     {
-      "api": "rdk:service:chat",
+      "api": "viam-labs:service:chat",
       "model": "mcvella:chat:chatgpt",
       "short_description": "ChatGPT service for Viam",
       "markdown_link": "README.md#config"

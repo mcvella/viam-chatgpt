@@ -32,6 +32,12 @@ This module is built as a [Chat service](https://github.com/viam-labs/chat-servi
 
 ### Python
 
+First, you'll need to add the Chat API to your project (for example, add this to your requirements.txt):
+
+``` bash
+chat-service-api @ git+https://github.com/viam-labs/chat-service-api.git@v0.1.5
+```
+
 ```python
 from chat_service_api import Chat
 
