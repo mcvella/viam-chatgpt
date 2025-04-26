@@ -9,7 +9,7 @@
       "api": "rdk:service:chat",
       "model": "mcvella:chat:chatgpt",
       "short_description": "ChatGPT service for Viam",
-      "markdown_link": "README.md#model-mcvella-chatgpt"
+      "markdown_link": "README.md#config"
     }
   ],
   "applications": null,
