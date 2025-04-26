@@ -1,0 +1,27 @@
+{
+  "$schema": "https://dl.viam.dev/module.schema.json",
+  "module_id": "mcvella:chatgpt",
+  "visibility": "public",
+  "url": "https://github.com/mcvella/viam-chatgpt",
+  "description": "ChatGPT service for Viam",
+  "models": [
+    {
+      "api": "rdk:service:chat",
+      "model": "mcvella:chat:chatgpt",
+      "short_description": "ChatGPT service for Viam",
+      "markdown_link": "README.md#model-mcvella-chatgpt"
+    }
+  ],
+  "applications": null,
+  "entrypoint": "./run.sh",
+  "first_run": "",
+  "build": {
+    "build": "./build.sh",
+    "setup": "./setup.sh",
+    "path": "dist/archive.tar.gz",
+    "arch": [
+      "linux/amd64",
+      "linux/arm64"
+    ]
+  }
+}
