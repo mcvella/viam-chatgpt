@@ -58,12 +58,24 @@ class viam_chatgpt(Chat, Reconfigurable):
         if self.openai is None:
             raise Exception("OpenAI API is not ready")
 
-        response = self.openai.responses.create(
-            model=self.openai_model,
-            instructions=self.system_prompt,
-            input=message,
-        )
-
-        response_text = response.output_text
-        self.logger.debug(response_text)
-        return response_text
+        # Basic parameters for the API call
+        kwargs = {
+            "model": self.openai_model,
+            "messages": [
+                {"role": "system", "content": self.system_prompt},
+                {"role": "user", "content": message}
+            ]
+        }
+        
+        # Add response_format if specified
+        if extra and "response_format" in extra:
+            kwargs["response_format"] = extra["response_format"]
+        
+        # Cast to appropriate types to satisfy type checker
+        response = self.openai.chat.completions.create(**kwargs)  # type: ignore
+        
+        content = response.choices[0].message.content
+        result = "" if content is None else content
+            
+        self.logger.debug(result)
+        return result

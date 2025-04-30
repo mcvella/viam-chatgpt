@@ -46,6 +46,13 @@ from chat_service_api import Chat
 chatgpt = Chat.from_robot(robot, name="chatgpt")
 response = await chatgpt.chat("What is the meaning of life?")
 print(response)
+
+# For JSON output
+json_response = await chatgpt.chat(
+    "List three animals with their scientific names and habitats",
+    extra={"response_format": {"type": "json_object"}}
+)
+print(json_response)
 ```
 
 ### Go
@@ -57,3 +64,18 @@ chatgpt, err := chat.FromRobot(robot, "chatgpt")
 resp, err := chatgpt.Chat(ctx, "What is the meaning of life?")
 fmt.Println(resp)
 ```
+
+## Advanced Options
+
+### JSON Response Format
+
+You can request structured JSON output by passing the `response_format` parameter in the `extra` argument:
+
+```python
+json_data = await chatgpt.chat(
+    "Provide the population data for New York, London, and Tokyo",
+    extra={"response_format": {"type": "json_object"}}
+)
+```
+
+This will instruct the model to return a valid JSON object that you can parse and use in your application.
